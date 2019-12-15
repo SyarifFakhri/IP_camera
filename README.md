@@ -1,5 +1,3 @@
-Description
-
 # Description
 Some useful utility scripts for cameras. Particularly saving datasets for machine learning.
 Based around cv2 camera.
