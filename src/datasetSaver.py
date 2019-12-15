@@ -56,9 +56,12 @@ class DatasetSaver():
 			saveDir = self.getSaveDir()
 			self.out = cv2.VideoWriter(saveDir, codec, fps, resolution)
 			print("Initialised as video.")
+
 		elif mode == 'picture':
 			self.maxPics = maxPics
-			print("Initialised as picture.")
+
+			if self.debug:
+				print("Initialised as picture.")
 		else:
 			print("Invalid mode. Mode must be either 'picture' or 'video'.")
 			raise NotImplementedError
@@ -172,6 +175,11 @@ class DatasetSaver():
 
 		else:
 			raise Exception("Mode not set!")
+
+	def release(self):
+		if self.mode == 'video':
+			self.out.release()
+
 
 
 
