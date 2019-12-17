@@ -9,7 +9,7 @@ import os
 import glob
 
 class RobustCamera(object):
-	def __init__(self, videoStream, device_location, autoSearchCamera=False,debug=True):
+	def __init__(self, videoStream, device_location=None, autoSearchCamera=False,debug=True):
 		###Variable initializations
 		self.videoStream = videoStream
 		self.cap = None
@@ -108,3 +108,5 @@ class RobustCamera(object):
 				time.sleep(timeOut)
 				print("Timeout over. Restarting.")
 				self.VideoCapture(self.videoStream)
+	def release(self):
+		self.cap.release()

@@ -8,12 +8,12 @@ from motionDetector import MotionDetector
 import multiprocessing as mp
 import cv2
 import os
+import sys
 
+def frameGrabber(queue, quit):
+	#os.system("sudo /home/nvidia/setup_camera.sh")
 
-def frameGrabber(queue):
-	os.system("sudo /home/nvidia/setup_camera.sh")
-
-	cap = RobustCamera(2,autoSearchCamera=True,
+	cap = RobustCamera(0,autoSearchCamera=True,
 	                   device_location=dataset_config.cam_device_location,
 	                   debug=dataset_config.debug)
 
@@ -24,6 +24,12 @@ def frameGrabber(queue):
 			continue
 		else:
 			queue.put(frame)
+
+		if quit.is_set():
+			break
+
+	cap.release()
+	sys.exit(1)
 
 
 def frameProcessor(queue):
@@ -57,9 +63,16 @@ def frameProcessor(queue):
 
 
 if __name__ == '__main__':
+	print("Starting program")
 	queue = mp.Queue(1) #shared queue to store pictures
+	quit = mp.Event()
 
-	grabber = mp.Process(target=frameGrabber, args=(queue,))
+	grabber = mp.Process(target=frameGrabber, args=(queue,quit,))
 	grabber.start()
 
 	frameProcessor(queue)
+
+	#on exit
+	quit.set()
+	grabber.terminate()
+	print("Shutting down...")

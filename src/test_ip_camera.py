@@ -8,7 +8,7 @@ from robustCamera import RobustCamera
 #print("After URL")
 
 #cap = RobustCamera('rtsp://admin:123456@169.254.132.241:554/h264/ch1/main/av_stream')
-cap = RobustCamera(1) #webcam stream
+cap = RobustCamera(0) #webcam stream
 
 while True:
     #print('About to start the Read command')
