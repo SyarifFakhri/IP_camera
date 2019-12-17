@@ -1,0 +1,189 @@
+Script started on Selasa 17 Dis 2019 10:52:36  +08
+no change     /home/haq/miniconda3/condabin/conda
+no change     /home/haq/miniconda3/bin/conda
+no change     /home/haq/miniconda3/bin/conda-env
+no change     /home/haq/miniconda3/bin/activate
+no change     /home/haq/miniconda3/bin/deactivate
+no change     /home/haq/miniconda3/etc/profile.d/conda.sh
+no change     /home/haq/miniconda3/etc/fish/conf.d/conda.fish
+no change     /home/haq/miniconda3/shell/condabin/Conda.psm1
+no change     /home/haq/miniconda3/shell/condabin/conda-hook.ps1
+no change     /home/haq/miniconda3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /home/haq/miniconda3/etc/profile.d/conda.csh
+no change     /home/haq/.bashrc
+No action taken.
+Starting program
+Initialised as picture.
+found camera stream: /dev/video0
+Initialized camera:  /dev/video0
+Qt: Session management error: None of the authentication protocols specified are supported
+Found contour of size:  545.5
+Getting directory: 
+test/testPic_32
+Writing pic to directory:  test/testPic_32
+Found contour of size:  1017.5
+Getting directory: 
+test/testPic_33
+Writing pic to directory:  test/testPic_33
+Found contour of size:  1111.0
+Getting directory: 
+test/testPic_34
+Writing pic to directory:  test/testPic_34
+Found contour of size:  1087.0
+Getting directory: 
+test/testPic_35
+Writing pic to directory:  test/testPic_35
+Found contour of size:  1921.0
+Getting directory: 
+test/testPic_36
+Writing pic to directory:  test/testPic_36
+Found contour of size:  5363.0
+Getting directory: 
+test/testPic_37
+Writing pic to directory:  test/testPic_37
+Found contour of size:  501.0
+Getting directory: 
+test/testPic_38
+Writing pic to directory:  test/testPic_38
+Found contour of size:  775.0
+Getting directory: 
+test/testPic_39
+Writing pic to directory:  test/testPic_39
+Found contour of size:  778.5
+Getting directory: 
+test/testPic_40
+Writing pic to directory:  test/testPic_40
+Found contour of size:  570.5
+Getting directory: 
+test/testPic_41
+Writing pic to directory:  test/testPic_41
+Found contour of size:  1270.0
+Getting directory: 
+test/testPic_42
+Writing pic to directory:  test/testPic_42
+Found contour of size:  557.0
+Getting directory: 
+test/testPic_43
+Writing pic to directory:  test/testPic_43
+Found contour of size:  641.5
+Getting directory: 
+test/testPic_44
+Writing pic to directory:  test/testPic_44
+Found contour of size:  2073.5
+Getting directory: 
+test/testPic_45
+Writing pic to directory:  test/testPic_45
+Found contour of size:  575.0
+Getting directory: 
+test/testPic_46
+Writing pic to directory:  test/testPic_46
+Found contour of size:  2238.5
+Getting directory: 
+test/testPic_47
+Writing pic to directory:  test/testPic_47
+Found contour of size:  509.0
+Getting directory: 
+test/testPic_48
+Writing pic to directory:  test/testPic_48
+Found contour of size:  572.0
+Getting directory: 
+test/testPic_49
+Writing pic to directory:  test/testPic_49
+^CTraceback (most recent call last):
+  File "/home/haq/repos/IP_camera/src/save_dataset_multiprocessing.py", line 73, in <module>
+    frameProcessor(queue)
+  File "/home/haq/repos/IP_camera/src/save_dataset_multiprocessing.py", line 47, in frameProcessor
+    frame = queue.get(True) #True -> block until there is a frame in the queue
+  File "/home/haq/miniconda3/envs/CenterNet/lib/python3.6/multiprocessing/queues.py", line 94, in get
+    res = self._recv_bytes()
+  File "/home/haq/miniconda3/envs/CenterNet/lib/python3.6/multiprocessing/connection.py", line 216, in recv_bytes
+Process Process-1:
+^C  File "/home/haq/miniconda3/envs/CenterNet/lib/python3.6/multiprocessing/connection.py", line 407, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/haq/miniconda3/envs/CenterNet/lib/python3.6/multiprocessing/connection.py", line 379, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+
+Script done on Selasa 17 Dis 2019 10:52:41  +08
+Script started on Selasa 17 Dis 2019 10:52:50  +08
+no change     /home/haq/miniconda3/condabin/conda
+no change     /home/haq/miniconda3/bin/conda
+no change     /home/haq/miniconda3/bin/conda-env
+no change     /home/haq/miniconda3/bin/activate
+no change     /home/haq/miniconda3/bin/deactivate
+no change     /home/haq/miniconda3/etc/profile.d/conda.sh
+no change     /home/haq/miniconda3/etc/fish/conf.d/conda.fish
+no change     /home/haq/miniconda3/shell/condabin/Conda.psm1
+no change     /home/haq/miniconda3/shell/condabin/conda-hook.ps1
+no change     /home/haq/miniconda3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /home/haq/miniconda3/etc/profile.d/conda.csh
+no change     /home/haq/.bashrc
+No action taken.
+Starting program
+Initialised as picture.
+found camera stream: /dev/video0
+Initialized camera:  /dev/video0
+Qt: Session management error: None of the authentication protocols specified are supported
+Found contour of size:  1490.0
+Getting directory: 
+test/testPic_49
+Writing pic to directory:  test/testPic_49
+Found contour of size:  4910.5
+Getting directory: 
+test/testPic_50
+Writing pic to directory:  test/testPic_50
+Found contour of size:  768.0
+Getting directory: 
+test/testPic_51
+Writing pic to directory:  test/testPic_51
+Found contour of size:  4828.5
+Getting directory: 
+test/testPic_52
+Writing pic to directory:  test/testPic_52
+Found contour of size:  698.5
+Getting directory: 
+test/testPic_53
+Writing pic to directory:  test/testPic_53
+Found contour of size:  10923.5
+Getting directory: 
+test/testPic_54
+Writing pic to directory:  test/testPic_54
+Found contour of size:  10039.0
+Getting directory: 
+test/testPic_55
+Writing pic to directory:  test/testPic_55
+Found contour of size:  960.0
+Getting directory: 
+test/testPic_56
+Writing pic to directory:  test/testPic_56
+Found contour of size:  4225.5
+Getting directory: 
+test/testPic_57
+Writing pic to directory:  test/testPic_57
+Found contour of size:  598.5
+Getting directory: 
+test/testPic_58
+Writing pic to directory:  test/testPic_58
+Found contour of size:  855.0
+Getting directory: 
+test/testPic_59
+Writing pic to directory:  test/testPic_59
+Found contour of size:  13511.0
+Getting directory: 
+test/testPic_60
+Writing pic to directory:  test/testPic_60
+Found contour of size:  664.5
+Getting directory: 
+test/testPic_61
+Writing pic to directory:  test/testPic_61
+Found contour of size:  8761.5
+Getting directory: 
+test/testPic_62
+Writing pic to directory:  test/testPic_62
+Found contour of size:  2833.5
+Getting directory: 
+test/testPic_63
+Writing pic to directory:  test/testPic_63
+Shutting down...
+
+Script done on Selasa 17 Dis 2019 10:52:53  +08
