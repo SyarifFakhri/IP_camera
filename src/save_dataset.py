@@ -13,8 +13,8 @@ from dataset_config import save_location, min_area, show, debug
 os.system("sudo /home/nvidia/setup_camera.sh")
 
 #cap = cv2.VideoCapture('rtsp://admin:123456@169.254.132.241:554/h264/ch1/main/av_stream')
-cap = RobustCamera(1)
-out = DatasetSaver("test/testPic",  # should become test/testPic_0 etc
+cap = RobustCamera(0)
+out = DatasetSaver("test/testPics",  # should become test/testPic_0 etc
                    mode='picture',
                    maxPics=1000,
                    maxSpaceMb=100,

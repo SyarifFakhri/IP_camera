@@ -13,7 +13,7 @@ import sys
 def frameGrabber(queue, quit):
 	#os.system("sudo /home/nvidia/setup_camera.sh")
 
-	cap = RobustCamera(0,autoSearchCamera=True,
+	cap = RobustCamera(1,autoSearchCamera=False,
 	                   device_location=dataset_config.cam_device_location,
 	                   debug=dataset_config.debug)
 
@@ -37,7 +37,7 @@ def frameProcessor(queue):
 	out = DatasetSaver("test/testPic",
 	                   mode='picture',
 	                   maxPics=1000,
-	                   maxSpaceMb=100,
+	                   maxSpaceMb=20,
 	                   debug=dataset_config.debug)
 	detector = MotionDetector(minMovementArea=dataset_config.min_area,
 	                          debug=dataset_config.debug)

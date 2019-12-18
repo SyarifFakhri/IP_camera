@@ -34,6 +34,7 @@ class DatasetSaver():
 	             maxPics=999999,
 	             maxSpaceMb=1000,
 	             picExtension='.jpg',
+	             picChunks = 100, #Save in folder chunks of size 1000
 	             debug=True): #1gb default
 		self.debug = debug
 		self.mode = mode
@@ -49,15 +50,19 @@ class DatasetSaver():
 		self.fps = fps
 		self.resolution = resolution
 		self.averagePicSize = None
+		self.parentPictureFolderName = picChunks
+		self.picChunks = picChunks #save it so we know how much to increment later
 
-		self.lastSaved = self.determineLastSavePoint()
+
 		if mode == 'video':
+			self.lastSaved = self.determineLastSavePoint()
 			self.lastSaved = self.lastSaved + 1 #don't want to overwrite the old one
 			saveDir = self.getSaveDir()
 			self.out = cv2.VideoWriter(saveDir, codec, fps, resolution)
 			print("Initialised as video.")
 
 		elif mode == 'picture':
+			self.parentPictureFolderName, self.lastSaved = self.determineLastSavePointPictures()
 			self.maxPics = maxPics
 
 			if self.debug:
@@ -69,8 +74,15 @@ class DatasetSaver():
 	def getSaveDir(self):
 		if self.debug:
 			print("Getting directory: ")
-			print(os.path.join(self.pathName, self.videoName + "_" + str(self.lastSaved)))
-		return os.path.join(self.pathName, self.videoName + "_" + str(self.lastSaved))
+			print(os.path.join(self.pathName, self.videoName + "_" + str(self.lastSaved))) #add a directory in between
+
+		if self.lastSaved % (self.picChunks + 1) == 0:
+			self.parentPictureFolderName += self.picChunks
+
+		parentPath = os.path.join(self.pathName, str(self.parentPictureFolderName))
+		self.createDirectory(parentPath)
+
+		return os.path.join(parentPath, self.videoName + "_" + str(self.lastSaved))
 
 	def determineLastSavePoint(self):
 		dirs = os.listdir(self.pathName)
@@ -84,6 +96,34 @@ class DatasetSaver():
 			currentGreatestVideoNum = max(int(splitNumAndExt[0]), currentGreatestVideoNum)
 
 		return currentGreatestVideoNum #so we don't overrwrite the old one but start a new one instead
+
+	def determineLastSavePointPictures(self):
+		path = os.path.join(self.pathName, str(self.parentPictureFolderName))
+		self.createDirectory(path)
+
+		dirs = os.listdir(self.pathName)
+		currentGreatestFolderNum = 0
+		for file in dirs:
+			currentGreatestFolderNum = max(int(file), currentGreatestFolderNum)
+
+		path = os.path.join(self.pathName, str(self.parentPictureFolderName))
+		picDirs = os.listdir(path)
+
+		currentGreatestVideoNum = 1
+		for file in picDirs:
+			splitBaseName = file.split('_')
+			baseName = splitBaseName[0]
+			if baseName != self.videoName:
+				continue
+			splitNumAndExt = os.path.splitext(splitBaseName[1])
+			currentGreatestVideoNum = max(int(splitNumAndExt[0]), currentGreatestVideoNum)
+
+		return currentGreatestFolderNum, currentGreatestVideoNum
+
+
+	def createDirectory(self, folderName):
+		if os.path.isdir(folderName) == False:
+			os.mkdir(folderName)
 
 	def isDirectoryFull(self): #"We just check if the current size < max size, but when we write the new image, it could exceed it. Only on the next check will it then trigger, and if it's resource constrained, might be too big"
 		# size = os.path.size(self.pathName) #return size in bytes
@@ -168,10 +208,12 @@ class DatasetSaver():
 					print("Writing pic to directory: ", saveDir)
 				self.lastSaved += 1
 				cv2.imwrite(saveDir + self.picExtension, frame)
+				print("Current amount of space allocated: ",
+				      str(self.spaceUsed) + "Mb. Max Space: " + str(self.maxSpace) + "MB")
 			else:
 				print("Directory is full, Images will not be saved.")
 				print("Current amount of space allocated: ", str(self.spaceUsed) + "Mb. Max Space: " + str(self.maxSpace) + "MB")
-				print("No of pics allocated: ", str(self.maxPics), " No of pics written: ", str(self.lastSaved - 1))
+				print("No of pics allocated: ", str(self.maxPics), " No of pics written: ", str(self.lastSaved))
 
 		else:
 			raise Exception("Mode not set!")
