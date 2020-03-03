@@ -1,6 +1,9 @@
 import cv2
 from robustCamera import RobustCamera
-
+import os
+import time
+#os.system("sudo /home/haqlinux/setup_camera.sh")
+#time.sleep(1)
 #print("Before URL")
 #cap = cv2.VideoCapture('rtsp://admin:123456@169.254.132.241:554/h264/ch1/main/av_stream')
 #cap = cv2.VideoCapture('rtsp://admin:123456@169.254.132.241:554/1')
@@ -8,7 +11,8 @@ from robustCamera import RobustCamera
 #print("After URL")
 
 #cap = RobustCamera('rtsp://admin:123456@169.254.132.241:554/h264/ch1/main/av_stream')
-cap = RobustCamera(0) #webcam stream
+cap = cv2.VideoCapture('rtsp://admin:admin123@192.168.1.108:554/')
+#cap = RobustCamera(0) #webcam stream
 
 while True:
     #print('About to start the Read command')
